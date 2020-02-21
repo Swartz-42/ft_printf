@@ -6,15 +6,16 @@
 /*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:47:56 by lrobert           #+#    #+#             */
-/*   Updated: 2020/02/21 18:29:40 by aducas           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 19:43:12 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# include <stdio.h>
 # include "../libft/include/libft.h"
+# define BASE10 "0123456789"
+# define BASE16LC "0123456789abcdef"
+# define BASE16UC "0123456789ABCDEF"
 
 enum			e_boolean
 {
@@ -35,12 +36,8 @@ typedef struct	s_tab
 	va_list			ap;
 }				t_tab;
 
-#define BASE10 "0123456789"
-#define	BASE16LC "0123456789abcdef"
-#define	BASE16UC "0123456789ABCDEF"
-
-int				ft_printf(const char *text, ...)
-				__attribute__((format(printf, 1, 2)));
+int				ft_printf(const char *text,
+				...) __attribute__((format(printf,1,2)));
 int				ft_display_int(t_tab *tpf);
 int				ft_display_u_int(t_tab *tpf);
 int				ft_display_str(t_tab *tpf);
