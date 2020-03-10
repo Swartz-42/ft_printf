@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
+/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/27 14:51:35 by lrobert           #+#    #+#             */
-/*   Updated: 2020/02/21 17:53:46 by aducas           ###   ########lyon.fr   */
+/*   Created: 2020/02/24 17:00:16 by lrobert           #+#    #+#             */
+/*   Updated: 2020/03/09 14:53:47 by lrobert          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			ft_display_str(t_tab *tpf)
 
 	if (!(text = va_arg(tpf->ap, char *)))
 		text = "(null)";
+	(tpf->widthsign == TRUE) ? tpf->fminus = TRUE : 0;
 	argsize = ft_strlen(text);
 	arglen = ft_prec_arglen(tpf, argsize);
 	if (tpf->valprec < tpf->width && tpf->fprecision == TRUE)

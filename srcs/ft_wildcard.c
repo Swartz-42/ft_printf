@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wildcard.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
+/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 15:20:44 by lrobert           #+#    #+#             */
-/*   Updated: 2020/02/19 14:27:32 by aducas           ###   ########lyon.fr   */
+/*   Created: 2020/02/24 17:01:00 by lrobert           #+#    #+#             */
+/*   Updated: 2020/03/09 14:53:15 by lrobert          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	ft_wildcard_width(t_tab *tpf)
 	if (tpf->width < 0)
 	{
 		tpf->width = -tpf->width;
-		tpf->fminus = TRUE;
-		tpf->fzero = FALSE;
+		tpf->widthsign = TRUE;
 	}
 }
 

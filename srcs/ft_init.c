@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 12:52:14 by gbendjaf          #+#    #+#             */
-/*   Updated: 2020/02/19 15:47:39 by lrobert          ###   ########lyon.fr   */
+/*   Created: 2020/02/24 17:00:38 by lrobert           #+#    #+#             */
+/*   Updated: 2020/03/09 15:03:42 by lrobert          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	ft_init(t_tab *tpf)
 	tpf->fminus = FALSE;
 	tpf->fzero = FALSE;
 	tpf->fprecision = FALSE;
+	tpf->fdiese = FALSE;
+	tpf->fplus = FALSE;
+	tpf->fblank = FALSE;
+	tpf->widthsign = FALSE;
 	tpf->width = 0;
 	tpf->valprec = 0;
 	tpf->nbspace = 0;

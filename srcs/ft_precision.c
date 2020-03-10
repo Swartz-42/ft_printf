@@ -6,7 +6,7 @@
 /*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:03:22 by lrobert           #+#    #+#             */
-/*   Updated: 2020/02/19 16:46:16 by lrobert          ###   ########lyon.fr   */
+/*   Updated: 2020/03/10 13:45:36 by lrobert          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,23 @@ void	ft_precision_pos(t_tab *tpf, int val, int argsize)
 			tpf->nbspace -= tpf->nbzero;
 		tpf->nbzero = tpf->valprec - argsize;
 	}
-	if (tpf->nbspace < 0)
+	if (tpf->fplus == TRUE || tpf->fblank == TRUE)
+	{
+		tpf->nbzero++;
+		(tpf->valprec < tpf->width) ? tpf->nbspace-- : 0;
+	}
+	if (tpf->nbspace < 0 || tpf->valprec >= tpf->width)
 		tpf->nbspace = 0;
-	if (tpf->valprec >= tpf->width)
-		tpf->nbspace = 0;
-	else if (tpf->valprec <= argsize)
+	if (tpf->nbzero < 0 || tpf->valprec <= argsize)
 		tpf->nbzero = 0;
 	else
 	{
-		ft_display(tpf, val, 0);
+		ft_display_pos(tpf, val);
 		return ;
 	}
 	if (tpf->width > argsize + tpf->nbzero)
 		tpf->nbspace = tpf->width - (argsize + tpf->nbzero);
-	ft_display(tpf, val, 0);
+	ft_display_pos(tpf, val);
 }
 
 void	ft_precision_ui(t_tab *tpf, int val, int argsize)
@@ -63,9 +66,7 @@ void	ft_precision_ui(t_tab *tpf, int val, int argsize)
 			tpf->nbspace -= tpf->nbzero;
 		tpf->nbzero = tpf->valprec - argsize;
 	}
-	if (tpf->nbspace < 0)
-		tpf->nbspace = 0;
-	if (tpf->valprec >= tpf->width)
+	if (tpf->nbspace < 0 || tpf->valprec >= tpf->width)
 		tpf->nbspace = 0;
 	else if (tpf->valprec <= argsize)
 		tpf->nbzero = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
+/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 14:12:06 by lrobert           #+#    #+#             */
-/*   Updated: 2020/02/19 14:02:31 by aducas           ###   ########lyon.fr   */
+/*   Created: 2020/02/24 16:59:48 by lrobert           #+#    #+#             */
+/*   Updated: 2020/03/09 14:54:13 by lrobert          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		ft_display_char(t_tab *tpf)
 	int		nbspace;
 
 	text = va_arg(tpf->ap, int);
+	(tpf->widthsign == TRUE) ? tpf->fminus = TRUE : 0;
 	if (tpf->width > 0)
 		nbspace = tpf->width - 1;
 	else
