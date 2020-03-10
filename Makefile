@@ -26,7 +26,7 @@ SRC         =   srcs/ft_display_addr.c		\
 				srcs/ft_display_int.c		\
 				srcs/ft_display_percent.c	\
 				srcs/ft_display_str.c		\
-				srcs/ft_display_u_int.c		\
+				srcs/ft_display_ui.c		\
 				srcs/ft_display.c			\
 				srcs/ft_init.c				\
 				srcs/ft_parse.c				\

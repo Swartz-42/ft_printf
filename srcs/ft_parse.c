@@ -6,7 +6,7 @@
 /*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 12:12:08 by lrobert           #+#    #+#             */
-/*   Updated: 2020/02/27 16:50:52 by lrobert          ###   ########lyon.fr   */
+/*   Updated: 2020/03/10 14:04:44 by lrobert          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_parse_2(int i, char *str, t_tab *tpf)
 
 static int	ft_flags(int i, char *str, t_tab *tpf)
 {
-	while (ft_compare(str[i], "-0#+ "))
+	while (ft_comp(str[i], "-0#+ "))
 	{
 		if (str[i] == '-')
 		{
