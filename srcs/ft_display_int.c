@@ -3,39 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
+/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 16:59:59 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/10 12:29:11 by lrobert          ###   ########lyon.fr   */
+/*   Created: 2020/02/03 18:33:05 by aducas            #+#    #+#             */
+/*   Updated: 2020/03/04 14:49:26 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../include/ft_printf.h"
 
 static int	ft_zero(t_tab *tpf, int argsize)
 {
-	if (tpf->fblank == TRUE || tpf->fplus == TRUE)
-		argsize = 1;
-	else
-		argsize = 0;
-	if (tpf->width > 0 && tpf->fminus == FALSE)
-		ft_putnchar_fd(' ', tpf->width - argsize, 1);
-	if (tpf->fblank == TRUE)
-		ft_putchar_fd(' ', 1);
-	if (tpf->fplus == TRUE)
-		ft_putchar_fd('+', 1);
-	if (tpf->width > 0 && tpf->fminus == TRUE)
-		ft_putnchar_fd(' ', tpf->width - argsize, 1);
-	tpf->nbspace = tpf->width - argsize;
-	(tpf->nbspace < 0) ? tpf->nbspace = 0 : 0;
+	argsize = 0;
+	if (tpf->width > 0)
+		ft_putnchar_fd(' ', tpf->width, 1);
+	tpf->nbspace = tpf->width;
 	tpf->nbzero = 0;
 	return (argsize);
 }
 
 static void	ft_display_pos_int(int val, int argsize, t_tab *tpf)
 {
-	if (tpf->fblank == TRUE)
-		ft_putchar_fd(' ', 1);
 	if (tpf->fminus == TRUE)
 	{
 		if (tpf->fprecision == TRUE)
@@ -89,15 +77,12 @@ int			ft_display_int(t_tab *tpf)
 	val = va_arg(tpf->ap, int);
 	argsize = ft_base_ld(val, BASE10);
 	(val < 0) ? argsize++ : 0;
-	(val < 0) ? tpf->fblank = FALSE : 0;
-	(val >= 0 && (tpf->fplus == TRUE || tpf->fblank == TRUE)) ? argsize++ : 0;
 	if (tpf->fprecision == FALSE && tpf->width > argsize && tpf->fzero == TRUE)
 		tpf->nbzero = tpf->width - argsize;
 	else if (tpf->width > 0)
 		tpf->nbspace = tpf->width - argsize;
 	(tpf->nbspace < 0) ? tpf->nbspace = 0 : 0;
 	(tpf->nbzero < 0) ? tpf->nbzero = 0 : 0;
-	(val < 0 && tpf->widthsign == TRUE) ? tpf->fminus = TRUE : 0;
 	if (val < 0)
 		ft_display_neg_int(val, argsize, tpf);
 	else if (tpf->valprec == 0 && val == 0 && tpf->fprecision == TRUE)

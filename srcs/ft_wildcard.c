@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_wildcard.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
+/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 17:01:00 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/09 14:53:15 by lrobert          ###   ########lyon.fr   */
+/*   Created: 2020/02/11 15:20:44 by lrobert           #+#    #+#             */
+/*   Updated: 2020/03/04 14:51:00 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../include/ft_printf.h"
 
 void	ft_wildcard_width(t_tab *tpf)
 {
@@ -18,7 +18,8 @@ void	ft_wildcard_width(t_tab *tpf)
 	if (tpf->width < 0)
 	{
 		tpf->width = -tpf->width;
-		tpf->widthsign = TRUE;
+		tpf->fminus = TRUE;
+		tpf->fzero = FALSE;
 	}
 }
 

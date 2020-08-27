@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
+/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 17:00:53 by lrobert           #+#    #+#             */
-/*   Updated: 2020/02/24 17:00:54 by lrobert          ###   ########lyon.fr   */
+/*   Created: 2020/01/30 22:18:45 by aducas            #+#    #+#             */
+/*   Updated: 2020/03/04 14:50:56 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../include/ft_printf.h"
 
 int		ft_printf(const char *text, ...)
 {

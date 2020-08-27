@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_precision.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
+/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:03:22 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/10 13:45:36 by lrobert          ###   ########lyon.fr   */
+/*   Updated: 2020/03/04 14:50:53 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../include/ft_printf.h"
 
 void	ft_precision_neg(t_tab *tpf, int argsize)
 {
@@ -37,14 +37,11 @@ void	ft_precision_pos(t_tab *tpf, int val, int argsize)
 			tpf->nbspace -= tpf->nbzero;
 		tpf->nbzero = tpf->valprec - argsize;
 	}
-	if (tpf->fplus == TRUE || tpf->fblank == TRUE)
-	{
-		tpf->nbzero++;
-		(tpf->valprec < tpf->width) ? tpf->nbspace-- : 0;
-	}
-	if (tpf->nbspace < 0 || tpf->valprec >= tpf->width)
+	if (tpf->nbspace < 0)
 		tpf->nbspace = 0;
-	if (tpf->nbzero < 0 || tpf->valprec <= argsize)
+	if (tpf->valprec >= tpf->width)
+		tpf->nbspace = 0;
+	else if (tpf->valprec <= argsize)
 		tpf->nbzero = 0;
 	else
 	{
@@ -66,7 +63,9 @@ void	ft_precision_ui(t_tab *tpf, int val, int argsize)
 			tpf->nbspace -= tpf->nbzero;
 		tpf->nbzero = tpf->valprec - argsize;
 	}
-	if (tpf->nbspace < 0 || tpf->valprec >= tpf->width)
+	if (tpf->nbspace < 0)
+		tpf->nbspace = 0;
+	if (tpf->valprec >= tpf->width)
 		tpf->nbspace = 0;
 	else if (tpf->valprec <= argsize)
 		tpf->nbzero = 0;

@@ -3,17 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
+/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 12:12:08 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/10 14:04:44 by lrobert          ###   ########lyon.fr   */
+/*   Updated: 2020/03/04 14:50:45 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../include/ft_printf.h"
 
-static int	ft_parse_2(int i, char *str, t_tab *tpf)
+int	ft_flags_2(int i, char *str, t_tab *tpf)
 {
+	while (ft_comp(str[i], "-0"))
+	{
+		if (str[i] == '-')
+		{
+			tpf->fminus = TRUE;
+			tpf->fzero = FALSE;
+		}
+		if (str[i] == '0' && tpf->fminus == FALSE)
+			tpf->fzero = TRUE;
+		i++;
+	}
 	if (str[i] == '*')
 		i = ft_wildcard(tpf, i);
 	else if (ft_isdigit(str[i]))
@@ -22,6 +33,28 @@ static int	ft_parse_2(int i, char *str, t_tab *tpf)
 		while (ft_isdigit(str[i]))
 			i++;
 	}
+	return (i);
+}
+
+int ft_esp(int i, char *str)
+{
+	if (str[i] == ' ')
+	{
+		while (str[i] == ' ')
+			i++;
+		ft_putchar_fd(' ', 1);
+		return (i);
+	}
+	return(0);
+}
+
+int	ft_flags(t_tab *tpf, char *str)
+{
+	int i;
+
+	i = 0;
+	i = ft_esp(i, str);
+	i = ft_flags_2(i, str, tpf);
 	if (str[i] == '.')
 	{
 		tpf->fprecision = TRUE;
@@ -38,38 +71,11 @@ static int	ft_parse_2(int i, char *str, t_tab *tpf)
 	return (i);
 }
 
-static int	ft_flags(int i, char *str, t_tab *tpf)
-{
-	while (ft_comp(str[i], "-0#+ "))
-	{
-		if (str[i] == '-')
-		{
-			tpf->fminus = TRUE;
-			tpf->fzero = FALSE;
-		}
-		if (str[i] == '0' && tpf->fminus == FALSE)
-			tpf->fzero = TRUE;
-		if (str[i] == '+')
-		{
-			tpf->fplus = TRUE;
-			tpf->fblank = FALSE;
-		}
-		if (str[i] == ' ' && tpf->fplus == FALSE)
-			tpf->fblank = TRUE;
-		if (str[i] == '#')
-			tpf->fdiese = TRUE;
-		i++;
-	}
-	i = ft_parse_2(i, str, tpf);
-	return (i);
-}
-
-int			ft_parse(t_tab *tpf, char *str)
+int	ft_parse(t_tab *tpf, char *str)
 {
 	int	i;
 
-	i = 0;
-	i = ft_flags(i, str, tpf);
+	i = ft_flags(tpf, str);
 	if (str[i] == 'c')
 		ft_display_char(tpf);
 	else if (str[i] == 's')

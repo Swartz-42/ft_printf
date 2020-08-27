@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_display_hex.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
+/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 15:49:14 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/10 13:50:37 by lrobert          ###   ########lyon.fr   */
+/*   Updated: 2020/03/04 14:49:21 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../include/ft_printf.h"
 
 static void	ft_conversion(t_tab *tpf, int argsize)
 {
@@ -30,8 +30,9 @@ static void	ft_conversion(t_tab *tpf, int argsize)
 				tpf->nbspace -= tpf->nbzero;
 			tpf->nbzero = tpf->valprec - argsize;
 		}
-		(tpf->fdiese == TRUE) ? tpf->nbzero += 2 : 0;
-		if (tpf->nbspace < 0 || tpf->valprec >= tpf->width)
+		if (tpf->nbspace < 0)
+			tpf->nbspace = 0;
+		if (tpf->valprec >= tpf->width)
 			tpf->nbspace = 0;
 		else if (tpf->valprec <= argsize)
 			tpf->nbzero = 0;
@@ -47,11 +48,8 @@ int			ft_display_hex(char text, t_tab *tpf)
 	char	*base;
 
 	val = va_arg(tpf->ap, long);
-	(tpf->widthsign == TRUE) ? tpf->fminus = TRUE : 0;
+	argsize = ft_base_ld(val, BASE16LC);
 	base = (text == 'x') ? BASE16LC : BASE16UC;
-	argsize = ft_base_ld(val, base);
-	if (val != 0 && tpf->fdiese == TRUE)
-		argsize = argsize + 2;
 	if (val == 0 && tpf->fprecision == TRUE && tpf->valprec == 0)
 	{
 		argsize = 0;
