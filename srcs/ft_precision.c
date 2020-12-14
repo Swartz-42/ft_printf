@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_precision.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
+/*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 16:03:22 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/04 14:50:53 by aducas           ###   ########lyon.fr   */
+/*   Updated: 2020/02/19 16:46:16 by lrobert          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	ft_precision_neg(t_tab *tpf, int argsize)
 {
@@ -45,12 +45,12 @@ void	ft_precision_pos(t_tab *tpf, int val, int argsize)
 		tpf->nbzero = 0;
 	else
 	{
-		ft_display_pos(tpf, val);
+		ft_display(tpf, val, 0);
 		return ;
 	}
 	if (tpf->width > argsize + tpf->nbzero)
 		tpf->nbspace = tpf->width - (argsize + tpf->nbzero);
-	ft_display_pos(tpf, val);
+	ft_display(tpf, val, 0);
 }
 
 void	ft_precision_ui(t_tab *tpf, int val, int argsize)

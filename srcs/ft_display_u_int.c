@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_ui.c                                    :+:      :+:    :+:   */
+/*   ft_display_u_int.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lrobert <lrobert@student.le-101.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 17:00:24 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/09 17:30:35 by lrobert          ###   ########lyon.fr   */
+/*   Created: 2020/02/07 12:13:31 by gbendjaf          #+#    #+#             */
+/*   Updated: 2020/02/19 16:47:50 by lrobert          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static int	ft_zero(t_tab *tpf, int argsize)
 {
@@ -22,7 +22,7 @@ static int	ft_zero(t_tab *tpf, int argsize)
 	return (argsize);
 }
 
-static void	ft_prec_display(int val, int argsize, t_tab *tpf)
+static void	ft_display_uint(int val, int argsize, t_tab *tpf)
 {
 	if (tpf->fminus == TRUE)
 	{
@@ -47,7 +47,7 @@ static void	ft_prec_display(int val, int argsize, t_tab *tpf)
 	}
 }
 
-int			ft_display_unsigned(t_tab *tpf)
+int			ft_display_u_int(t_tab *tpf)
 {
 	int		argsize;
 	int		val;
@@ -60,11 +60,10 @@ int			ft_display_unsigned(t_tab *tpf)
 		tpf->nbspace = tpf->width - argsize;
 	(tpf->nbspace < 0) ? tpf->nbspace = 0 : 0;
 	(tpf->nbzero < 0) ? tpf->nbzero = 0 : 0;
-	(tpf->widthsign == TRUE) ? tpf->fminus = TRUE : 0;
 	if (tpf->valprec == 0 && val == 0 && tpf->fprecision == TRUE)
 		argsize = ft_zero(tpf, argsize);
 	else
-		ft_prec_display(val, argsize, tpf);
+		ft_display_uint(val, argsize, tpf);
 	tpf->length += argsize + tpf->nbzero + tpf->nbspace;
 	return (tpf->length);
 }

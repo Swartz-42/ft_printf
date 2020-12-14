@@ -6,11 +6,11 @@
 /*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 16:03:37 by aducas            #+#    #+#             */
-/*   Updated: 2020/03/04 14:49:16 by aducas           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 18:13:55 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	ft_addr(t_tab *tpf, unsigned long adr, int argsize)
 {
@@ -39,12 +39,7 @@ int			ft_display_addr(t_tab *tpf)
 
 	adr = va_arg(tpf->ap, unsigned long);
 	argsize = ft_base(adr, "0123456789abcdef") + 2;
-	if (adr == 0)
-	{
-		ft_putstr_fd("(nil)", 1);
-		argsize = 5;
-	}
-	else if (tpf->fprecision && tpf->valprec == 0 && adr == 0 && tpf->width == 0)
+	if (tpf->fprecision && tpf->valprec == 0 && adr == 0 && tpf->width == 0)
 	{
 		ft_putstr_fd("0x", 1);
 		argsize = 2;

@@ -6,11 +6,11 @@
 /*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 22:18:45 by aducas            #+#    #+#             */
-/*   Updated: 2020/03/04 14:50:56 by aducas           ###   ########lyon.fr   */
+/*   Updated: 2020/02/19 14:27:26 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int		ft_printf(const char *text, ...)
 {

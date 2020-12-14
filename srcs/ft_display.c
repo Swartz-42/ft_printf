@@ -6,13 +6,13 @@
 /*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 17:40:10 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/04 14:50:35 by aducas           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 16:29:23 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	ft_display_pos(t_tab *tpf, long int val)
+static void	ft_display_pos(t_tab *tpf, long int val)
 {
 	if (tpf->fminus == FALSE)
 	{
@@ -22,13 +22,13 @@ void	ft_display_pos(t_tab *tpf, long int val)
 	}
 	else
 	{
-		ft_putnchar_fd('0', tpf->nbzero, 1);
 		ft_putnbr_fd(val, 1);
+		ft_putnchar_fd('0', tpf->nbzero, 1);
 		ft_putnchar_fd(' ', tpf->nbspace, 1);
 	}
 }
 
-void	ft_display_neg(t_tab *tpf, long int val)
+static void	ft_display_neg(t_tab *tpf, long int val)
 {
 	if (tpf->fminus == FALSE)
 	{
@@ -72,8 +72,8 @@ void		ft_display_ui(t_tab *tpf, unsigned int val)
 	}
 	else
 	{
+		ft_putnbr_base(val, BASE10);
 		ft_putnchar_fd('0', tpf->nbzero, 1);
-		ft_putnbr_fd(val, 1);
 		ft_putnchar_fd(' ', tpf->nbspace, 1);
 	}
 }

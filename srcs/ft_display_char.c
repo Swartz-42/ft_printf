@@ -6,11 +6,11 @@
 /*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 14:12:06 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/04 14:49:13 by aducas           ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 14:49:53 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int		ft_display_char(t_tab *tpf)
 {
@@ -18,6 +18,7 @@ int		ft_display_char(t_tab *tpf)
 	int		nbspace;
 
 	text = va_arg(tpf->ap, int);
+	(tpf->widthsign == TRUE) ? tpf->fminus = TRUE : 0;
 	if (tpf->width > 0)
 		nbspace = tpf->width - 1;
 	else

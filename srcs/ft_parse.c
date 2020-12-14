@@ -6,11 +6,11 @@
 /*   By: aducas <aducas@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 12:12:08 by lrobert           #+#    #+#             */
-/*   Updated: 2020/03/04 14:50:45 by aducas           ###   ########lyon.fr   */
+/*   Updated: 2020/02/19 14:27:00 by aducas           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int	ft_flags_2(int i, char *str, t_tab *tpf)
 {
@@ -36,24 +36,11 @@ int	ft_flags_2(int i, char *str, t_tab *tpf)
 	return (i);
 }
 
-int ft_esp(int i, char *str)
-{
-	if (str[i] == ' ')
-	{
-		while (str[i] == ' ')
-			i++;
-		ft_putchar_fd(' ', 1);
-		return (i);
-	}
-	return(0);
-}
-
 int	ft_flags(t_tab *tpf, char *str)
 {
 	int i;
 
 	i = 0;
-	i = ft_esp(i, str);
 	i = ft_flags_2(i, str, tpf);
 	if (str[i] == '.')
 	{
@@ -83,7 +70,7 @@ int	ft_parse(t_tab *tpf, char *str)
 	else if (str[i] == 'd' || str[i] == 'i')
 		ft_display_int(tpf);
 	else if (str[i] == 'u')
-		ft_display_unsigned(tpf);
+		ft_display_u_int(tpf);
 	else if (str[i] == 'x' || str[i] == 'X')
 		ft_display_hex(str[i], tpf);
 	else if (str[i] == '%')
