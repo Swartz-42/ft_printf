@@ -47,7 +47,7 @@ int			ft_display_hex(char text, t_tab *tpf)
 	long	val;
 	char	*base;
 
-	val = va_arg(tpf->ap, long);
+	val = va_arg(tpf->ap, unsigned int);
 	argsize = ft_base_ld(val, BASE16LC);
 	base = (text == 'x') ? BASE16LC : BASE16UC;
 	if (val == 0 && tpf->fprecision == TRUE && tpf->valprec == 0)
