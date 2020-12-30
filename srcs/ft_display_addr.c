@@ -39,12 +39,7 @@ int			ft_display_addr(t_tab *tpf)
 
 	adr = va_arg(tpf->ap, unsigned long);
 	argsize = ft_base(adr, "0123456789abcdef") + 2;
-	if (adr == 0)
-	{
-		ft_putstr_fd("(nil)", 1);
-		argsize = 5;
-	}
-	else if (tpf->fprecision && tpf->valprec == 0 && tpf->width == 0)
+	if (tpf->fprecision && tpf->valprec == 0 && adr == 0 && tpf->width == 0)
 	{
 		ft_putstr_fd("0x", 1);
 		argsize = 2;
